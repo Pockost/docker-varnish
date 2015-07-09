@@ -20,5 +20,4 @@ RUN PACKAGE_DEPENDENCY="\
 
 EXPOSE 6081 6082
 
-ENTRYPOINT ["sh", "-c", "/usr/sbin/varnishd -F -a 0.0.0.0:6081 -f /etc/varnish/default.vcl"]
-CMD ["-a", "${VARNISH_LISTEN_ADDRESS}:${VARNISH_LISTEN_PORT}", "-f", "${VARNISH_VCL_CONF}", "-T", "${VARNISH_ADMIN_LISTEN_ADDRESS}:${VARNISH_ADMIN_LISTEN_PORT}", "-t", "${VARNISH_TTL}", "-w", "${VARNISH_MIN_THREADS},${VARNISH_MAX_THREADS},${VARNISH_THREAD_TIMEOUT}", "-S", "${VARNISH_SECRET_FILE}", "-s", "${VARNISH_STORAGE}"]
+ENTRYPOINT ["/usr/sbin/varnishd", "-F", "-a", "0.0.0.0:6081", "-f", "/etc/varnish/default.vcl"]
