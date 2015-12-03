@@ -8,6 +8,7 @@ ENV VARNISH_MAJOR=4.0 VARNISH_VERSION=4.0.1
 RUN PACKAGE_DEPENDENCY="\
       apt-transport-https \
       curl \
+      ca-certificates \
     " \
     && apt-get update \
     && apt-get install -y $PACKAGE_DEPENDENCY \
