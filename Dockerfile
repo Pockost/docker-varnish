@@ -3,7 +3,7 @@ FROM debian:jessie
 MAINTAINER Romain THERRAT <romain42@gmail.com>
 LABEL Description="Varnish 4.0 on debian:jessie"
 
-ENV VARNISH_MAJOR=4.0 VARNISH_VERSION=4.0.1
+ENV VARNISH_MAJOR=4.0
 
 RUN PACKAGE_DEPENDENCY="\
       apt-transport-https \
