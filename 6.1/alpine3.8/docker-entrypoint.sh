@@ -9,7 +9,11 @@ fi
 
 BACKEND_PORT=${BACKEND_PORT:-80}
 
-cp /etc/varnisht/default.vcl /etc/varnish/default.vcl
+# Check default config
+FILE=/etc/varnish/default.vcl
+if [ ! -f $FILE ]; then
+  cp /etc/template/default.vcl $FILE
+fi
 
 # Setup config
 sed -i "s/__BACKEND_HOST__/${BACKEND_HOST}/g" /etc/varnish/default.vcl

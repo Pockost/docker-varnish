@@ -13,7 +13,7 @@ RUN apk add --no-cache automake libtool autoconf pkgconfig g++ py-docutils \
 FROM alpine:3.8
 
 RUN apk add --no-cache pcre libexecinfo gcc libc-dev \
-    && mkdir -p /var/lib/varnish /etc/varnish /etc/varnisht
+    && mkdir -p /var/lib/varnish /etc/varnish /etc/template
 
 COPY --from=0 /usr/sbin/varnishd /usr/sbin/varnishd
 COPY --from=0 /usr/bin/varnishadm /usr/bin/varnishadm
@@ -27,7 +27,8 @@ COPY --from=0 /usr/lib/varnish/ /usr/lib/varnish/
 COPY --from=0 /usr/lib/libedit.so.0.0.56 /usr/lib/
 COPY --from=0 /usr/lib/libvarnishapi.so.2.0.0 /usr/lib/
 COPY --from=0 /usr/lib/libncursesw.so.6.1 /usr/lib/
-COPY default.vcl /etc/varnisht/default.vcl
+COPY default.vcl /etc/template/default.vcl
+COPY default.vcl /etc/varnish/default.vcl
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 RUN ln -s /usr/lib/libvarnishapi.so.2.0.0 /usr/lib/libvarnishapi.so \
